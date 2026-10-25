@@ -8,6 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip ddnet-pocket.zip -d proj
+      - run: sed -i 's/\\"/"/g' proj/settings.gradle proj/build.gradle proj/app/build.gradle
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -21,4 +22,3 @@ jobs:
         with:
           name: ddnet-pocket-apk
           path: proj/app/build/outputs/apk/debug/app-debug.apk
-          
